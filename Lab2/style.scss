@@ -1,12 +1,5 @@
-@media only screen and (min-width: 1024px) {}
-
-@media only screen and (min-width: 600px) and (max-width: 1024px) {}
-
-@media only screen and (max-width: 600px) {}
-
 $column-width: 100% / 12;
 $bg-color: #E0E4CC;
-
 html {
     height: 100%;
     font-size: 16px;
@@ -19,77 +12,6 @@ body {
     margin: 0px;
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    img {
-        width: $column-width;
-    }
-    .title {
-        font-size: 32px;
-        width: $column-width * 4;
-    }
-    .space {
-        width: $column-width * 2;
-    }
-    .menu {
-        width: $column-width * 5;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        line-height: 32px;
-        .menuOption {}
-    }
-}
-
-.content {
-    margin-top: 5%;
-    display: flex;
-    justify-content: space-evenly;
-    div {
-        width: $column-width * 3;
-    }
-    .divTitle {
-        width: 40%;
-        height: 15%;
-        font-size: 24px;
-        text-align: center;
-        border-bottom: solid;
-        border-left: solid;
-        box-sizing: border-box;
-        position: relative;
-        left: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .divContent {
-        width: 80%;
-        margin: 10% 10%;
-    }
-    .div1 {
-        border-style: solid;
-        background: $bg-color;
-        .divTitle {
-            background: #68D1E6;
-        }
-    }
-    .div2 {
-        border-style: solid;
-        background: $bg-color;
-        .divTitle {
-            background: #F38630;
-        }
-    }
-    .div3 {
-        border-style: solid;
-        background: $bg-color;
-        .divTitle {
-            background: #E9AEAF;
-        }
-    }
-}
 .footerWraper {
     min-height: 100%;
     border: solid;
@@ -106,9 +28,175 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    span+span{
+    span+span {
         font-weight: bold;
     }
     border: solid;
     box-sizing: border-box;
 }
+
+@media only screen and (min-width: 1024px) {
+    .header {
+        margin-left: 5%;
+        margin-right: 5%;
+        display: flex;
+        align-items: center;
+        img {
+            width: $column-width;
+        }
+        .title {
+            font-size: 32px;
+            width: $column-width * 4;
+        }
+        .space {
+            width: $column-width * 2;
+        }
+        .menu {
+            width: $column-width * 5;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            line-height: 32px;
+        }
+        .menuBtn {
+            visibility: hidden;
+        }
+    }
+    .content {
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-evenly;
+        div {
+            width: $column-width * 3;
+        }
+        .divTitle {
+            width: 40%;
+            height: 15%;
+            font-size: 24px;
+            text-align: center;
+            border-bottom: solid;
+            border-left: solid;
+            box-sizing: border-box;
+            position: relative;
+            left: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .divContent {
+            width: 80%;
+            margin: 10% 10%;
+        }
+        .div1 {
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #68D1E6;
+            }
+        }
+        .div2 {
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #F38630;
+            }
+        }
+        .div3 {
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #E9AEAF;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    .footerWraper {
+        height: 100%;
+    }
+    .header {
+        margin-left: 5%;
+        display: flex;
+        align-items: center;
+        img {
+            width: $column-width;
+        }
+        .title {
+            font-size: 32px;
+            width: $column-width * 4;
+        }
+        .space {
+            width: $column-width * 6;
+        }
+        .menu {
+            visibility: hidden;
+        }
+        .menuBtn {
+            width: $column-width;
+        }
+    }
+    .content {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+        display: grid;
+        grid-template-columns: 47.5% 47.5%;
+        grid-column-gap: 5%;
+        grid-template-rows: 47.5% 47.5%;
+        grid-row-gap: 5%;
+        height: 70%;
+        div {
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .divTitle {
+            width: 40%;
+            height: 15%;
+            font-size: 24px;
+            text-align: center;
+            border-bottom: solid;
+            border-left: solid;
+            box-sizing: border-box;
+            position: relative;
+            left: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .divContent {
+            width: 80%;
+            margin: 10% 10%;
+        }
+        .div1 {
+            grid-row: 1;
+            grid-column: 1/-1;
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #68D1E6;
+            }
+        }
+        .div2 {
+            grid-row: 2;
+            grid-column: 1;
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #F38630;
+            }
+        }
+        .div3 {
+            grid-row: 2;
+            grid-column: 2;
+            border-style: solid;
+            background: $bg-color;
+            .divTitle {
+                background: #E9AEAF;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {}
