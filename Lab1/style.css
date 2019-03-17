@@ -1,0 +1,66 @@
+li {
+    list-style-type: square
+}
+
+#price {
+    color: red;
+    font-weight: bold;
+}
+
+.intro {
+    font-style: italic;
+}
+
+td img {
+    border-style: solid;
+    border-color: blue;
+}
+
+td img:hover {
+    border-color: red;
+}
+
+h1+h2 {
+    letter-spacing: 5px;
+}
+
+td[colspan="2"]>p {
+    font-size: small;
+}
+
+p~p {
+    color: gray;
+}
+
+body {
+    background-image: url(https://ecsmedia.pl/c/krzyzacy-b-iext38925527.jpg);
+    background-repeat: repeat-y;
+}
+
+h1 {
+    color: blue
+}
+
+h1 {
+    color: green
+}
+
+* {
+    font-family: Tahoma
+}
+
+body {
+    margin: 5em 10em 5em 10em
+}
+
+p {
+    text-align: justify
+}
+
+h1 {
+    color: yellow;
+}
+
+.bold {
+    font-weight: bold;
+}

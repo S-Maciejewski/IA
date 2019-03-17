@@ -1,0 +1,5 @@
+Browser sync:
+browser-sync start --server --directory --files "**/*"
+
+Saas:
+sass --watch style.scss:style.css
