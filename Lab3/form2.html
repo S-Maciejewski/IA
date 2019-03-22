@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>JavaScript</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.8.1/parsley.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <form name="data" data-parsley-validate>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="f_name" required></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="text" name="f_email" data-parsley-type="email" required></td>
+            </tr>
+            <tr>
+                <td>Zip code</td>
+                <td><input type="text" name="f_zip" pattern="\d{2}-\d{3}" required></td>
+            </tr>
+            <tr>
+                <td>City </td>
+                <td><input type="text" name="f_city" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+
+</html>
