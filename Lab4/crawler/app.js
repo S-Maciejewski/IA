@@ -32,7 +32,7 @@ request('https://www.otomoto.pl/osobowe/?search%5Bnew_used%5D=on', function (err
         if (list[i].querySelector('.offer-title a').getAttribute('title'))
             name = list[i].querySelector('.offer-title a').getAttribute('title');
         if (list[i].querySelector('.offer-price__number'))
-            price = list[i].querySelector('.offer-price__number').textContent.replace(' ', '').replace('PLN', '').replace('EUR', '').replace('\n', '');
+            price = list[i].querySelector('.offer-price__number').textContent.replace(/ /g, '').replace('PLN', '').replace('EUR', '').replace('\n', '');
         if (list[i].querySelector('.offer-item__content .offer-item__params li[data-code="engine_capacity"] span'))
             size = list[i].querySelector('.offer-item__content .offer-item__params li[data-code="engine_capacity"] span').textContent.replace('cm3', '').replace(' ', '');
         if (list[i].querySelector('.offer-item__content .offer-item__params li[data-code="year"] span'))
