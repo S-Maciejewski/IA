@@ -22,17 +22,20 @@
                 $('#toggle').toggleClass('zielona');
             });
             $('tr:even').addClass('zielona');
+
+
+            //12.
+            $('ol li.a:not(.b a)').addClass('zielona');
+            // $('ol li.a').not('.b a').addClass('zielona');
         });
 
-        //12.
-        $('')
 
     </script>
 </head>
 
 <body>
     <ol>
-        <li class="a"><span class="b"></span>1a</li>
+        <li class="a"><span class="b"><a>link </a></span>1a</li>
         <li class="b">2b</li>
         <li class="a">3a</li>
         <li class="b">4b</li>
