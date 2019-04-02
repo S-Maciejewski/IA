@@ -50,11 +50,24 @@ function getPageData(page) {
     });
 }
 
-async function getData(pages) {
+function getPages(pages){
+    let promises = [];
+    for (var page = 1; page <= pages; page++)
+        promises.push(getPageData(page));
+    return Promise.all(promises);
+}
+
+async function getDataParallel(pages) {
+    await getPages(pages);
+    results.sort((a, b) => (a.ratio < b.ratio) ? 1 : ((a.ratio > b.ratio) ? -1 : 0));
+    results.forEach(obj => obj.show());
+}
+
+async function getDataSequential(pages) {
     for (var page = 1; page <= pages; page++)
         await getPageData(page);
     results.sort((a, b) => (a.ratio < b.ratio) ? 1 : ((a.ratio > b.ratio) ? -1 : 0));
     results.forEach(obj => obj.show());
 }
 
-getData(3);
+getDataParallel(10);
