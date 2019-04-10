@@ -1,0 +1,11 @@
+Uruchamianie xampp:
+sudo /opt/lampp/lampp start
+
+Uruchamianie xampp gui:
+sudo /opt/lampp/manager-linux-x64.run
+
+Wyłączanie apache:
+sudo /etc/init.d/apache2 stop
+
+
+localhost/phpmyadmin
