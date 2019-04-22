@@ -26,6 +26,7 @@ function saveData(data) {
     console.log('Notes: ', notes);
     console.log('Categories: ', categories);
     refreshNotes();
+    refreshCategories();
 }
 
 function init() {
@@ -49,7 +50,7 @@ function loginVisibility(success) {
 function refreshNotes() {
     $('#notesField').html(`
     <ul class="mdl-list" id="notesList">
-        <li class="mdl-list__item mdl-list__item--two-line">
+        <li class="mdl-list__item mdl-list__item">
             <span class="mdl-list__item-primary-content">
                 Notes list
             </span>
@@ -58,7 +59,6 @@ function refreshNotes() {
     `);
     for (i in notes) {
         var listElement = $('#notesList');
-        console.log('logged in status:', loggedIn);
         if (!loggedIn)
             $(listElement).append(`
             <li class="mdl-list__item">
@@ -89,6 +89,30 @@ function refreshNotes() {
                 `</span>
         </li>
             `);
+    }
+}
+
+function refreshCategories() {
+    $('#categoriesField').html(`
+    <ul class="mdl-list" id="categoriesList">
+        <li class="mdl-list__item mdl-list__item--two-line">
+            <span class="mdl-list__item-primary-content">
+                Categories
+            </span>
+        </li>
+    </ul>
+    `);
+    for (i in categories) {
+        var listElement = $('#categoriesList');
+        console.log(listElement);
+        $(listElement).append(`
+        <li class="mdl-list__item mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon">local_offer</i>`
+            + categories[i].name +
+            `</span>
+        </li>
+        `);
     }
 }
 
