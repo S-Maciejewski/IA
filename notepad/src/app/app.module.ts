@@ -14,7 +14,7 @@ import { MainComponent } from './components/main/main.component';
   ],
   imports: [
     BrowserModule,
-    // MaterialModule,
+    MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule

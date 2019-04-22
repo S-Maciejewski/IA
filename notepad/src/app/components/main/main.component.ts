@@ -12,13 +12,13 @@ const httpOptions = {
 const api = {
   login: 'login',
   init: 'init',
-
+  note: 'note',
 };
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
   isLoggedIn = false;
@@ -26,6 +26,11 @@ export class MainComponent {
   categories: any[] = [];
   password: String = '';
   data: any;
+  
+  noteTitle: String = '';
+  noteContent: String = '';
+  noteDate: Date = new Date();
+  noteCategory: String = '';
 
   constructor(private http: HttpClient) {
     this.init();
@@ -49,6 +54,24 @@ export class MainComponent {
 
   init() {
     this.http.get(apiAdress + api.init, httpOptions).subscribe(data => {
+      this.data = data;
+      this.saveData();
+    });
+  }
+
+  saveNote() {
+    const note = JSON.stringify({
+      title: this.noteTitle,
+      content: this.noteContent,
+      category: this.noteCategory,
+      date: this.noteDate.toJSON().slice(0, 10)
+    });
+    this.noteTitle = '';
+    this.noteContent = '';
+    this.noteDate = new Date();
+    this.noteCategory = '';
+    console.log('Sending new note: ', JSON.parse(note));
+    this.http.post(apiAdress + api.note, note, httpOptions).subscribe(data => {
       this.data = data;
       this.saveData();
     });

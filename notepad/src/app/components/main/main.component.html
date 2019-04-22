@@ -45,6 +45,34 @@
               </span>
             </li>
           </ul>
+
+          <mat-card class="noteForm">
+            <mat-card-title>
+              New note
+            </mat-card-title>
+
+            <mat-form-field>
+              <input matInput placeholder="Title" [(ngModel)]="noteTitle">
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea matInput placeholder="Content" [(ngModel)]="noteContent"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select placeholder="Category" [(ngModel)]="noteCategory">
+                <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="noteDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-button color="primary" (click)="saveNote()">Save note</button>
+          </mat-card>
+
         </div>
 
         <div class="mdl-cell mdl-cell--4-col" id="categoriesField">
@@ -69,10 +97,7 @@
             <input class="mdl-textfield__input" type="text" id="passwd" [(ngModel)]="password">
             <label class="mdl-textfield__label" for="passwd">Secret password</label>
           </div>
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="loginBtn"
-            (click)="login()">
-            Login
-          </button>
+          <button mat-button color="primary" id="loginBtn" (click)="login()"> Login </button>
         </div>
       </div>
     </div>
