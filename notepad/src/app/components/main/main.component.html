@@ -83,12 +83,34 @@
               </span>
             </li>
             <li class="mdl-list__item mdl-list__item" *ngFor="let category of categories">
-              <span class="mdl-list__item-primary-content">
+              <span class="mdl-list__item-primary-content" *ngIf="editingCategoryId != category.id">
                 <i class="material-icons mdl-list__item-icon">local_offer</i>
                 {{category.name}}
               </span>
+              <span class="mdl-list__item-primary-content" *ngIf="editingCategoryId == category.id">
+                <i class="material-icons mdl-list__item-icon">edit</i>
+                <input matInput placeholder="Name" [(ngModel)]="newCategoryName">
+              </span>
+              <button mat-icon-button (click)="editCategory(category)">
+                <mat-icon *ngIf="editingCategoryId != category.id">edit</mat-icon>
+                <mat-icon *ngIf="editingCategoryId == category.id">save</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteCategory(category.name)" *ngIf="editingCategoryId != category.id">
+                <mat-icon>delete</mat-icon>
+              </button>
+
             </li>
           </ul>
+
+          <mat-card class="categoryForm">
+            <mat-card-title>
+              New category
+            </mat-card-title>
+            <mat-form-field>
+              <input matInput placeholder="Name" [(ngModel)]="categoryName">
+            </mat-form-field>
+            <button mat-button color="primary" (click)="saveCategory()">Save category</button>
+          </mat-card>
         </div>
 
         <div class="mdl-cell mdl-cell--2-col" id="loginField" *ngIf="!isLoggedIn">

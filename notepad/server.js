@@ -52,7 +52,7 @@ app.post('/note', (req, res) => {
 });
 app.post('/newCat', (req, res) => {
     if (req.body.name)
-        categories.push(res.body.name);
+        categories.push(new Category(req.body.name));
     res.send({ 'categories': categories, 'notes': notes });
 });
 app.post('/editCat', (req, res) => {

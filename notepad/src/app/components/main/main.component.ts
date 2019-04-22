@@ -13,6 +13,9 @@ const api = {
   login: 'login',
   init: 'init',
   note: 'note',
+  newCat: 'newCat',
+  editCat: 'editCat',
+  deleteCat: 'deleteCat'
 };
 
 @Component({
@@ -26,11 +29,15 @@ export class MainComponent {
   categories: any[] = [];
   password: String = '';
   data: any;
-  
+
   noteTitle: String = '';
   noteContent: String = '';
   noteDate: Date = new Date();
   noteCategory: String = '';
+
+  categoryName: String = '';
+  editingCategoryId = -1;
+  newCategoryName: String = '';
 
   constructor(private http: HttpClient) {
     this.init();
@@ -77,4 +84,38 @@ export class MainComponent {
     });
   }
 
+  saveCategory() {
+    console.log('Saving category: ', this.categoryName);
+    this.http.post(apiAdress + api.newCat, JSON.stringify({ name: this.categoryName }), httpOptions).subscribe(data => {
+      this.data = data;
+      this.saveData();
+    });
+    this.categoryName = '';
+  }
+
+  editCategory(category) {
+    if (this.editingCategoryId !== category.id) {
+      this.editingCategoryId = category.id;
+      this.newCategoryName = category.name;
+    } else {
+      console.log('Editing category:', category.name, ' (id = ', category.id, ') changed to ', this.newCategoryName);
+      this.http.post(apiAdress + api.editCat, JSON.stringify({ name: this.newCategoryName, id: category.id }), httpOptions)
+        .subscribe(data => {
+          console.log('got data from server:');
+          console.log(data);
+          this.data = data;
+          this.saveData();
+        });
+      this.editingCategoryId = -1;
+      this.newCategoryName = '';
+    }
+  }
+
+  deleteCategory(name: String) {
+    console.log('Deleting category: ', name);
+    this.http.post(apiAdress + api.deleteCat, JSON.stringify({ name: name }), httpOptions).subscribe(data => {
+      this.data = data;
+      this.saveData();
+    });
+  }
 }
