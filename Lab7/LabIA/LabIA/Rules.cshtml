@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+
+    if (Session["rules"] == null)
+    {
+        Session["rules"] = new List<String>();
+    }
+    var sessionRules = (List<string>)Session["rules"];
+
+    if (Request["rule"] != null)
+    {
+        sessionRules = (List<string>)Session["rules"];
+        sessionRules.Add(Request["rule"]);
+        Session["rules"] = sessionRules;
+        Response.Redirect("Rules.cshtml");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h1>Rules</h1>
+        @foreach (var rule in sessionRules)
+        {
+            <p>@rule</p>
+        }
+    </div>
+    <form method="post" action="~/Rules.cshtml"
+          enctype="application/x-www-form-urlencoded">
+        <div>
+            <label for="rule">New rule</label>
+        </div>
+        <div>
+            <input name="rule" type="text" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+</body>
+</html>

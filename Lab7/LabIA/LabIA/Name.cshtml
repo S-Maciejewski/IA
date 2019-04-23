@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+    String name = "Robert Paulson";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <ul>
+        @for (var i = 0; i < 10; i++)
+        {
+        <p>
+            His name is
+            @if (!Request["name"].Equals(""))
+            {
+                @Request["name"];
+            } else {
+                @name
+            }
+        </p>
+        }
+    </ul>
+
+</body>
+</html>
