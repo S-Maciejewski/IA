@@ -8,7 +8,7 @@
     <div class="page-content">
       <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--6-col" id="notesField">
-          <ul class="mdl-list" id="notesList" *ngIf="!isLoggedIn">
+          <!-- <ul class="mdl-list" id="notesList" *ngIf="!isLoggedIn">
             <li class="mdl-list__item mdl-list__item">
               <span class="mdl-list__item-primary-content">
                 Notes list
@@ -20,7 +20,7 @@
                 {{note.title}}
               </span>
             </li>
-          </ul>
+          </ul> -->
 
           <ul class="mdl-list" id="notesList" *ngIf="isLoggedIn">
             <li class="mdl-list__item mdl-list__item">
@@ -46,7 +46,7 @@
             </li>
           </ul>
 
-          <mat-card class="noteForm">
+          <mat-card class="noteForm" *ngIf="isLoggedIn">
             <mat-card-title>
               New note
             </mat-card-title>
@@ -75,7 +75,7 @@
 
         </div>
 
-        <div class="mdl-cell mdl-cell--4-col" id="categoriesField">
+        <div class="mdl-cell mdl-cell--4-col" id="categoriesField" *ngIf="isLoggedIn">
           <ul class="mdl-list" id="categoriesList">
             <li class="mdl-list__item mdl-list__item">
               <span class="mdl-list__item-primary-content">
@@ -116,10 +116,13 @@
         <div class="mdl-cell mdl-cell--2-col" id="loginField" *ngIf="!isLoggedIn">
           <h4>Login</h4>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="passwd" [(ngModel)]="password">
-            <label class="mdl-textfield__label" for="passwd">Secret password</label>
+            <input class="mdl-textfield__input" type="text" id="userName" [(ngModel)]="userName">
+            <label class="mdl-textfield__label" for="userName">User name</label>
           </div>
           <button mat-button color="primary" id="loginBtn" (click)="login()"> Login </button>
+        </div>
+        <div class="mdl-cell mdl-cell--2-col" id="loginField" *ngIf="isLoggedIn">
+          <button mat-button color="primary" id="loginBtn" (click)="logout()"> Logout </button>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ const httpOptions = {
 
 const api = {
   login: 'login',
+  logout: 'logout',
   init: 'init',
   note: 'note',
   newCat: 'newCat',
@@ -27,7 +28,7 @@ export class MainComponent {
   isLoggedIn = false;
   notes: any[] = [];
   categories: any[] = [];
-  password: String = '';
+  userName: String = '';
   data: any;
 
   noteTitle: String = '';
@@ -40,7 +41,6 @@ export class MainComponent {
   newCategoryName: String = '';
 
   constructor(private http: HttpClient) {
-    this.init();
   }
 
   saveData() {
@@ -51,18 +51,20 @@ export class MainComponent {
   }
 
   login() {
-    this.http.post(apiAdress + api.login, JSON.stringify({ passwd: this.password }), httpOptions).subscribe(data => {
+    this.http.post(apiAdress + api.login, JSON.stringify({ user: this.userName }), httpOptions).subscribe(data => {
       this.data = data;
+      this.saveData();
+
       if (this.data.hasOwnProperty('success')) {
         this.isLoggedIn = this.data.success;
       }
     });
   }
 
-  init() {
-    this.http.get(apiAdress + api.init, httpOptions).subscribe(data => {
-      this.data = data;
-      this.saveData();
+  logout() {
+    this.http.post(apiAdress + api.logout, JSON.stringify({}), httpOptions).subscribe(() => {
+      this.isLoggedIn = false;
+      this.userName = '';
     });
   }
 
